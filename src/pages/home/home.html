@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar fixed>
+    <ion-title text-center>Instagram</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card  *ngFor="let person of people">
+
+        <ion-item (click)="goToProfile()">
+            <ion-avatar item-left>
+                <img [src]="person.photo">
+            </ion-avatar>
+
+            <h2>{{person.name}} {{person.lname}}</h2>
+
+        </ion-item>
+
+        <img [src]="person.photo">
+
+        <ion-row>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-left>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    12 Likes
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="primary" clear small icon-left>
+                    <ion-icon name='text'></ion-icon>
+                    4 Comments
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+
+                <ion-note>
+                    11h ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-card-content>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>
+
+
+
+
+
+  <!--
+  <ion-card *ngFor="let photo of photos">
+    <ion-card-content>
+      <img [src]="photo.src" />
+      <button (click)="likePhoto(photo)" ion-button clear >
+        <ion-icon name="heart-outline"></ion-icon>
+          <a href="#" class="subdued">{{photo.likes}}Like</a>
+      </button>
+      <button ion-button clear item-right icon-right>
+        Comment
+        <ion-icon name="chatbubble"></ion-icon>
+      </button>
+      <p>{{comment}}</p>
+      <!--<button (click)="deletePhoto(photo)" ion-button color="danger" block>
+        <ion-icon name="trash"></ion-icon>
+      </button>-->

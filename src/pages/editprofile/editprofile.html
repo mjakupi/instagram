@@ -1,0 +1,71 @@
+<!--
+  Generated template for the Editprofile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-avatar text-center>
+    <img class="img-circle" src="http://placehold.it/150x150">
+  </ion-avatar>
+
+
+  <ion-list>
+    <ion-list-header>
+      Public Information
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+        <ion-input type="text" name="name" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+        <ion-input type="text" name="pname" placeholder="Profile Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="calendar" item-left></ion-icon>
+        <ion-input type="text"name="web" placeholder="Website"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="information" item-left></ion-icon>
+      <ion-input type="text"name="info" placeholder="Bio"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Private Information
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input type="email"name="mail" placeholder="mjakupi1@Outlook.com"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="phone-portrait" item-left></ion-icon>
+      <ion-input type="number" name="phone" placeholder="+38970986204"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="male" item-left></ion-icon>
+      <ion-input type="text" name="gender" placeholder="Male"></ion-input>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
