@@ -19,40 +19,44 @@
 
 <ion-content>
 
-<ion-grid>
-    <ion-row>
-      <ion-col width-25>
-          <ion-avatar item-left>
-              <img class="img-circle" src="http://placehold.it/150x150">
-          </ion-avatar>
-      </ion-col>
+    <ion-grid>
+        <ion-row>
+            <ion-col width-25>
+                <ion-avatar item-left>
+                    <img class="img-circle" src="http://placehold.it/150x150">
+                </ion-avatar>
+            </ion-col>
 
-        <ion-col width-25 class="first">
-            <p>261 Posts</p>
-        </ion-col>
+            <ion-col width-25 class="first">
+                <p>261 Posts</p>
+            </ion-col>
 
-        <ion-col width-25 class="second">
-            <p>300 Followers</p>
-        </ion-col>
+            <ion-col width-25 class="second">
+                <p>300 Followers</p>
+            </ion-col>
 
-        <ion-col width-25 class="third">
-            <p>300 Following</p>
-        </ion-col>
-  </ion-row>
+            <ion-col width-25 class="third">
+                <p>300 Following</p>
+            </ion-col>
+        </ion-row>
 
-</ion-grid>
-<hr>
+    </ion-grid>
+    <hr>
     <ion-grid>
         <ion-row *ngFor="let i of rows">
-            <ion-col *ngFor="let person of people | slice:(i*3):(i+1)*3" width-33>
-                    <img [src]="person.photo" class="img" (tap)="tap()">
+            <ion-col *ngFor="let person of assetCollection  | slice:(i*3):(i+1)*3" width-33>
+                <img [src]="person.URL" class="img" (tap)="tap()">
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
 
-
 <!--
+ <ion-list *ngFor="let i of rows">
+        <ion-item *ngFor="let person of people | slice:(i*3):(i+1)*3" width-33 >
+            <img [src]="person.photo" class="img" (tap)="tap()">
+        </ion-item>
+    </ion-list>
   <ion-card *ngIf="images.imagesArr.length == 0">
  <ion-col width-30 class="button-container" style="text-align: center;">
       26 Posts

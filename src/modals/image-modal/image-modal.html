@@ -6,12 +6,38 @@
         <ion-icon name="md-close"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Full Size Image</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="modal">
+    <ion-slides (ionSlideDidChange)="slideChanged()">
+        <ion-slide *ngFor="let photo of assetCollection">
+            <img [src]="photo.URL"/>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button (click)="likePhoto()" color="primary" clear small icon-left>
+                            <ion-icon name='heart-outline'></ion-icon>
+                            {{tap}}
+                        </button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button color="primary" clear small icon-left>
+                            <ion-icon name='text-outline'></ion-icon>
+                            4 Comments
+                        </button>
+                    </ion-col>
+                    <ion-col center text-center>
 
+                        <ion-note class="small">
+                            11h ago
+                        </ion-note>
+                    </ion-col>
+                </ion-row>
+
+        </ion-slide>
+
+    </ion-slides>
 </ion-content>

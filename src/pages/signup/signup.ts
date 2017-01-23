@@ -1,10 +1,7 @@
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import {NavController, LoadingController, AlertController, ToastController} from 'ionic-angular';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { EmailValidator } from '../../validators/email';
 import {TabsPage} from "../tabs/tabs";
-import {Headers, Http} from "@angular/http";
-import {LoginPage} from "../login/login";
+import {Http} from "@angular/http";
 import {AuthDjango} from "../../providers/auth-django";
 
 @Component({
@@ -16,34 +13,67 @@ export class SignupPage {
 
     username:string;
     password:string;
+    private email;
 
   constructor(public nav: NavController,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,
               public http:Http,
-              public auth:AuthDjango
+              public auth:AuthDjango,
+              private toastCtrl: ToastController
   ) {}
 
 
   register(){
 
-    this.showLoader();
-
     let details = {
-      username: this.username,
-      password: this.password,
+        email : this.email,
+        username: this.username,
+        password: this.password,
 
     };
 
     this.auth.createAccount(details).then((result) => {
-      this.loading.dismiss();
-      console.log(result);
+        this.presentToast();
+        console.log(result);
       this.nav.setRoot(TabsPage);
     }, (err) => {
-      this.loading.dismiss();
+        this.errorMsg();
     });
 
   }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'User successfully registered',
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
+    errorMsg() {
+        let toast = this.toastCtrl.create({
+            message: 'Username:This field is required,' +
+            'Password:This field is required',
+            duration: 3000,
+            position: 'bottom'
+        });
+
+        toast.onDidDismiss(() => {
+
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }
+
 
   showLoader(){
 

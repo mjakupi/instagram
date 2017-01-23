@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import {NavController, NavParams, ViewController} from 'ionic-angular';
-import {AuthData} from "../../providers/auth";
+import { Component,ViewChild } from '@angular/core';
+import {NavController, NavParams, ViewController, Slides} from 'ionic-angular';
 import {Django} from "../../providers/django";
-
+import firebase from 'firebase';
 /*
   Generated class for the ImageModal page.
 
@@ -14,26 +13,43 @@ import {Django} from "../../providers/django";
   templateUrl: 'image-modal.html'
 })
 export class ImageModalPage {
-  public people:any;
-  rows:any;
-  imageID: number;
-
-  constructor(public navCtrl: NavController,
+    @ViewChild(Slides) slides: Slides;
+    public people:any;
+    rows:any;
+    assetCollection: any;
+    constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public AuthData: AuthData,
               public peopleService:Django,
               public viewCtrl:ViewController,
             ) {
-    this.imageID = this.navParams.get('id');
+
+  }
+    goToSlide() {
+        this.slides.slideTo(2, 500);
+    }
+    slideChanged() {
+        let currentIndex = this.slides.getActiveIndex();
+        console.log("Current index is", currentIndex);
+    }
+  ionViewDidEnter() {
+      firebase.database().ref('assets').on('value', (_snapshot:any) => {
+          var result = [];
+
+          _snapshot.forEach((_childSnapshot) => {
+              // get the key/id and the data for display
+              var element = _childSnapshot.val();
+              element.id = _childSnapshot.key;
+              result.push(element);
+              //this.firebaseImages.push(element);
+              console.log(result);
+          });
+
+          // set the component property
+          this.assetCollection = result
+  });
   }
 
-  ionViewDidLoad() {
-    this.peopleService.loadPeople().subscribe(data => {
-      this.people = data;
-      this.rows = Array.from(Array(Math.ceil(data.length / 3)).keys());
-    });
-    console.log('ionViewDidLoad ImageModalPage');
-  }
+
   close() {
     this.viewCtrl.dismiss(); // This works fine
   }

@@ -3,6 +3,7 @@ import {NavController, LoadingController, ActionSheetController, ModalController
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ProfilePage} from "../profile/profile";
+import {MapPage} from "../../modals/map/map";
 
 @Component({
   selector: 'page-search',
@@ -10,7 +11,6 @@ import {ProfilePage} from "../profile/profile";
 })
 export class SearchPage {
   private posts: any; // <- I've added the private keyword
-  private searchQuery: string = '';
   public items: any; // <- items property is now of the same type as posts
   constructor(private http: Http, private loadingCtrl: LoadingController,
               public actionSheetCtrl: ActionSheetController,
@@ -19,6 +19,7 @@ export class SearchPage {
 
   ) {
     // this.initializeItems(); <- you don't need this anymore
+
 
     // Show the loading message
     let loadingPopup = this.loadingCtrl.create({
@@ -34,6 +35,14 @@ export class SearchPage {
       loadingPopup.dismiss();
     });
   }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(MapPage, { userId: 8675309 });
+    profileModal.present();
+  }
+
+
+
 
   initializeItems() {
     this.items = this.posts;

@@ -4,7 +4,7 @@ import {LoginPage} from "../login/login";
 import {SignupPage} from "../signup/signup";
 import { Facebook, NativeStorage } from 'ionic-native';
 import {TabsPage} from "../tabs/tabs";
-import {RequestOptions, Headers,Http} from "@angular/http";
+import {Http} from "@angular/http";
 import {TakePhotoPage} from "../take-photo/take-photo";
 
 /*

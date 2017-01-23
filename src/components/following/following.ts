@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, ViewController} from 'ionic-angular';
-import {LikesPage} from "../../pages/likes/likes";
+import {NavController} from 'ionic-angular';
 
 /*
   Generated class for the Following component.

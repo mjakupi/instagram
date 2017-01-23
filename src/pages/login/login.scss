@@ -29,6 +29,7 @@ page-login {
       background-color: #f6f6f6;
       opacity: 0.7;
       font-size: 0.9em;
+
     }
 
     ion-list {
@@ -54,6 +55,13 @@ page-login {
       font-size: 0.9em;
       border: 1px solid #fff;
     }
+
+    .rounded{
+      border-radius: 30px !important;
+    }
+
+
+
 
   }
 

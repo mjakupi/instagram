@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { MenuController, NavController } from 'ionic-angular';
-import {LoginPage} from "../login/login";
 import {WelcomePage} from "../welcome/welcome";
 
 

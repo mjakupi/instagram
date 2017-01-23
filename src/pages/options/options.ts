@@ -1,12 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {NavController, NavParams, ModalController, ViewController, Nav, Events} from 'ionic-angular';
-import {LoginPage} from "../login/login";
 import {EditprofilePage} from "../editprofile/editprofile";
-import {Http, RequestOptions, Headers} from "@angular/http";
+import {Http} from "@angular/http";
 import { Storage } from '@ionic/storage';
 import {AuthDjango} from "../../providers/auth-django";
-import {IntroPage} from "../intro/intro";
-import {WelcomePage} from "../welcome/welcome";
+import {TokenProvider} from "../../providers/token-provider";
 
 /*
   Generated class for the Options page.
@@ -35,7 +33,8 @@ export class OptionsPage {
               public http:Http,
               public auth:AuthDjango,
               public storage:Storage,
-              public events: Events
+              public events: Events,
+              public tokenProvider:TokenProvider
   ) {
   }
 
@@ -51,7 +50,12 @@ export class OptionsPage {
   logout(){
 
     // set global variable that the user is logged off
+    window.localStorage.setItem('userLoggedIn','0');
+
     this.events.publish('userAction', {state: false});
+    window.localStorage.removeItem('email'); // remove email dari localStorage
+    window.localStorage.removeItem('uid'); // remove uid dari localStorage
+    window.localStorage.removeItem('displayName'); // remove displayName dari localStorage
 
   //   this.auth.logoutDjango().then(() => {
   //

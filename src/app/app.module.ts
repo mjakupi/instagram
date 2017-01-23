@@ -1,5 +1,6 @@
 import {NgModule, ErrorHandler} from '@angular/core';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import { AngularFireModule } from 'angularfire2';
 import { MyApp } from './app.component';
 import {Storage} from "@ionic/storage";
 import { LikesPage } from '../pages/likes/likes';
@@ -9,7 +10,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {ProfilePage} from "../pages/profile/profile";
 import {TakePhotoPage} from "../pages/take-photo/take-photo";
 import {LoginPage} from "../pages/login/login";
-import {AuthData} from "../providers/auth";
 import {ResetPasswordPage} from "../pages/reset-password/reset-password";
 
 import {Django} from "../providers/django";
@@ -24,6 +24,15 @@ import {FacebookPage} from "../pages/facebook/facebook";
 import {ImageModalPage} from "../modals/image-modal/image-modal";
 import {AuthDjango} from "../providers/auth-django";
 import {TokenProvider} from "../providers/token-provider";
+import {Sharedvars} from "../providers/sharedvars";
+import {Api} from "../providers/api";
+import {MapPage} from "../modals/map/map";
+import {Locations} from "../providers/locations";
+import {GoogleMaps} from "../providers/google-maps";
+import {Connectivity} from "../providers/connectivity";
+import {ListPage} from "../modals/list/list";
+import {FirebaseService} from "../providers/firebase-service";
+import {LikeModalPage} from "../modals/like-modal/like-modal";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -44,8 +53,11 @@ let pages = [
   WelcomePage,
   FacebookPage,
   ImageModalPage,
+  MapPage,
+  ListPage,
   FollowingComponent,
-  YouComponent
+  YouComponent,
+  LikeModalPage
 ];
 
 export function declarations() {
@@ -54,20 +66,36 @@ export function declarations() {
 export function entryComponents() {
   return pages;
 }
+var firebaseConfig = {
+    apiKey: "AIzaSyBPX0oQYfTYBb2-mLZtWowOyOmsDL7sg84",
+    authDomain: "instagram-95307.firebaseapp.com",
+    databaseURL: "https://instagram-95307.firebaseio.com",
+    storageBucket: "instagram-95307.appspot.com",
+    messagingSenderId: "891016089749"
+};
+
+
 
 @NgModule({
   declarations: declarations(),
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+      AngularFireModule.initializeApp(firebaseConfig)
+
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),
   providers: [
-    AuthData,
     AuthDjango,
     Storage,
     Django,
-      TokenProvider,
+    Sharedvars,
+    Api,
+    TokenProvider,
+    Locations,
+    FirebaseService,
+    GoogleMaps,
+    Connectivity,
     {  provide: ErrorHandler, useClass: IonicErrorHandler },
 
 

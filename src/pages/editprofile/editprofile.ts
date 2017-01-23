@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams, ViewController} from 'ionic-angular';
-import {OptionsPage} from "../options/options";
+import {AuthDjango} from "../../providers/auth-django";
 
 /*
   Generated class for the Editprofile page.
@@ -13,15 +13,30 @@ import {OptionsPage} from "../options/options";
   templateUrl: 'editprofile.html'
 })
 export class EditprofilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-  public viewCtrl:ViewController) {}
+    username:string;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public viewCtrl:ViewController,
+              public authDjango:AuthDjango) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditprofilePage');
+      this.username = '';
   }
 
   close() {
     this.viewCtrl.dismiss(); // This works fine
   }
+
+    updateName(){
+        this.setUsername();
+    }
+
+    setUsername(){
+        this.username='Metin';
+    }
+
+    getUsername(){
+        return this.username;
+    }
 }

@@ -5,30 +5,45 @@
 </ion-header>
 
 <ion-content>
+   <!--
+    <ion-card *ngFor="let photo of photos | async">
+        <ion-card-content>
+            <button (click)="likePhoto(photo.$key, photo.likes)" ion-button block>
+                <ion-icon name="heart"></ion-icon>
+                <ion-badge item-right>{{photo.likes}}</ion-badge>
+            </button>
 
+            <button (click)="deletePhoto(photo.$key)" ion-button color="danger" block>
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-card-content>
+    </ion-card>
+-->
     <ion-card  *ngFor="let person of people">
 
-        <ion-item (click)="goToProfile()">
-            <ion-avatar item-left>
-                <img [src]="person.photo">
-            </ion-avatar>
+            <ion-item (click)="goToProfile()">
+                <ion-avatar item-left>
+                    <img [src]="person.photo" />
 
-            <h2>{{person.name}} {{person.lname}}</h2>
+                    <!--<img [src]="person.photo">-->
+                </ion-avatar>
 
-        </ion-item>
+                <h2>{{person.name}} {{person.lname}}</h2>
 
-        <img [src]="person.photo">
+            </ion-item>
+
+            <img (click)="tapEvent($event)" [src]="person.photo" />
 
         <ion-row>
             <ion-col>
-                <button ion-button color="primary" clear small icon-left>
-                    <ion-icon name='thumbs-up'></ion-icon>
-                    12 Likes
+                <button ion-button  color="primary" clear small icon-left>
+                    <ion-icon name='heart-outline'></ion-icon>
+                    {{tap}}
                 </button>
             </ion-col>
             <ion-col>
                 <button ion-button color="primary" clear small icon-left>
-                    <ion-icon name='text'></ion-icon>
+                    <ion-icon name='text-outline'></ion-icon>
                     4 Comments
                 </button>
             </ion-col>
@@ -43,7 +58,6 @@
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
         </ion-card-content>
     </ion-card>
-
 </ion-content>
 
 

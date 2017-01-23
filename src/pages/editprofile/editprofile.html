@@ -30,7 +30,7 @@
     </ion-list-header>
     <ion-item>
       <ion-icon name="mail" item-left></ion-icon>
-        <ion-input type="text" name="name" placeholder="Name"></ion-input>
+        <ion-input type="text" [(ngModel)]="username" name="name" placeholder="Name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="person" item-left></ion-icon>
@@ -63,9 +63,9 @@
     <ion-item>
       <ion-icon name="male" item-left></ion-icon>
       <ion-input type="text" name="gender" placeholder="Male"></ion-input>
-
     </ion-item>
-
+    <br>
+      <button ion-button block class="rounded" (click)="updateName()" color="secondary">Update</button>
   </ion-list>
 
 </ion-content>

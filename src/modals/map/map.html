@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar >
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Map
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon="add" (click)="addMarker()">
+        Add Marker
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
+  </div>
+
+  <div #map id="map"></div>
+
+</ion-content>

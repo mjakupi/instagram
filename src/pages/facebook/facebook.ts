@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Facebook, NativeStorage } from 'ionic-native';
 import { NavController } from 'ionic-angular';
-import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
 /*
   Generated class for the Facebook page.

@@ -25,6 +25,7 @@ export class TabsPage {
 
   constructor(public events: Events, public nav: Nav) {
 
+      //noinspection TypeScriptUnresolvedVariable
     this.events.subscribe('userAction', (value) => {
 
       this.userLoggedIn = value.state;
@@ -37,4 +38,6 @@ export class TabsPage {
 
 
   }
+
+
 }

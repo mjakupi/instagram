@@ -6,35 +6,37 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
 
 
-  <img class="center img-circle" src="http://placehold.it/150x150" [@flyInBottomSlow]="logoState">
+      <form class="login-form">
 
-
-    <ion-row class="login-form">
-      <ion-col>
         <ion-list inset>
 
           <ion-item>
             <ion-label><ion-icon name="person"></ion-icon></ion-label>
-            <ion-input [(ngModel)]="username" placeholder="email" type="text"></ion-input>
+            <ion-input [(ngModel)]="username" name="username" placeholder="username" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label><ion-icon name="lock"></ion-icon></ion-label>
-            <ion-input [(ngModel)]="password" placeholder="password" type="password"></ion-input>
+            <ion-input [(ngModel)]="password" name="password" placeholder="password" type="password"></ion-input>
           </ion-item>
+          <br/>
 
+          <button  text-center ion-button block  class="rounded" (click)="login()"  color="secondary">Login</button>
+          <br/>
+          <button text-center ion-button clear (click)="createNew()">New Here? Join now</button>
+          <br/>
+          <button text-center ion-button clear (click)="reset()">Forgot your password</button>
         </ion-list>
 
-        <button ion-button full (click)="login()" color="primary" class="login-button">Login</button>
-
-      </ion-col>
-    </ion-row>
 
 
-  </ion-content>
+
+      </form>
+
+</ion-content>
 
 
 

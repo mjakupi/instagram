@@ -1,61 +1,39 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-segment>
-            <ion-segment-button value="standard">
-                Following
-            </ion-segment-button>
+    <ion-navbar>
+        <ion-buttons start>
 
-            <ion-segment-button value="sat">
-                You
-            </ion-segment-button>
-        </ion-segment>
-    </ion-toolbar>
+        </ion-buttons>
+        <ion-title>
+            Chat
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding>
     <ion-list>
-        <ion-item>
-            <ion-label fixed>Name</ion-label>
-            <ion-input [(ngModel)]="name" type="text"></ion-input>
+        <ion-item *ngFor="let item of firelist | async">
+            <ion-avatar item-left>
+                <img [src]="item.img" />
+            </ion-avatar>
+            <h2 class="chat-username">
+                {{item.username}}
+            </h2>
+            <p class="chat-text">{{item.chat_text}}</p>
+            <h3 class="chat-time">{{item.timestamp | date:'dd/MM/yyyy'}}</h3>
         </ion-item>
-
-        <ion-item>
-            <ion-label fixed>Last-Name</ion-label>
-            <ion-input [(ngModel)]="lname" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <input [(ngModel)]="photo" type="file" name="img" >
-        </ion-item>
-
-
-        <button ion-button color="primary" [(ngModel)]="photo" ngDefaultControl name="photo" block (click)="takePicture()">
-            Take a Picture
-        </button>
-        <br>
-        <button ion-button  color="secondary" block (click)="submit()">Submit to server</button>
     </ion-list>
-    <ion-list>
-
-        <ion-item>
-            <ion-label fixed>Name</ion-label>
-            <ion-input [(ngModel)]="name" type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label fixed>Last-Name</ion-label>
-            <ion-input [(ngModel)]="league" type="text"></ion-input>
-        </ion-item>
-        <br>
-        <button ion-button  color="secondary" block (click)="postTeams()">Submit to server</button>
-    </ion-list>
-    <ion-card>
-        <ion-card-header>
-            Response
-        </ion-card-header>
-
-        <ion-card-content>
-            <b>{{data.response}}</b>
-        </ion-card-content>
-    </ion-card>
-
 </ion-content>
+<ion-footer>
+    <form #f="ngForm">
+        <ion-grid>
+            <ion-row>
+                <ion-col width-80>
+                    <ion-input [(ngModel)]="chat" name="chatText" required placeholder="message..."></ion-input>
+                </ion-col>
+                <ion-col width-20 center>
+                    <button (click)="chatSend(f.value, f.valid)" full [disabled]="f.valid === false">send</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-footer>

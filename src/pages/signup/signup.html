@@ -15,6 +15,11 @@
 
         <ion-item>
           <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+          <ion-input [(ngModel)]="email" placeholder="Email" type="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><ion-icon name="person"></ion-icon></ion-label>
           <ion-input [(ngModel)]="username" placeholder="Username" type="name"></ion-input>
         </ion-item>
 
@@ -25,7 +30,7 @@
 
       </ion-list>
 
-      <button ion-button (click)="register()" class="continue-button">Register</button>
+        <button ion-button block  class="rounded" (click)="register()"  color="secondary">Register</button>
 
     </ion-col>
   </ion-row>
